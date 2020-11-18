@@ -1,13 +1,24 @@
 body {
   font-family: 'Courier New', sans-serif;
   font-size: 14px;
-  background: #eee;
+  background: black;
+}
+.img-muscle p{
+  position: absolute;
+  color: #ffffff;
+  font-size: 25px;
+  left: 34%;
+  top: 18%;
+}
+
+img{
+  width: 365px;
 }
 
 .container{
   margin: 20px auto;
   width: 365px;
-  background: #fff;
+  background: black;
   padding: 15px;
   text-align: center;
 }

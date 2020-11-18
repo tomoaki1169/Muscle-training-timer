@@ -10,12 +10,32 @@
   var startTime;
   var timeLeft;
   var timeToCountDown = 4 * 1000;
+  var timerId;
+
+  function updataTimer(t) {
+    var d = new Date(t);
+    var m = d.getMinutes();
+    var s = d.getSeconds();
+    var ms = d.getMilliseconds();
+    m = ('0' + m).slice(-2);
+    m = ('0' + m).slice(-2);
+    m = ('00' + m).slice(-3);
+    timer.textContent = m + ':' + s + '.' + ms;
+  }
 
   function countDown() {
-    setTimeout(function() {
+    timerId = setTimeout(function() {
       var elapsedTime = 
       timeLeft = timeToCountDown - (Date.now() - startTime);
-      console.log(timeLeft);
+      // console.log(timeLeft);
+      if (timeLeft < 0) {
+        clearTimeout(timerId);
+        timeLeft = 0;
+        timeToCountDown = 0;
+        updataTimer(timeLeft);
+        return;
+      }
+      updataTimer(timeLeft)
       countDown();
     }, 10);
   }

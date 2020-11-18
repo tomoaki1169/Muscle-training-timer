@@ -9,17 +9,18 @@
 
   var startTime;
   var timeLeft;
-  var timeToCountDown = 4 * 1000;
+  // var timeToCountDown = 4 * 1000;
+  var timeToCountDown = 0;
   var timerId;
 
-  function updataTimer(t) {
+  function updateTimer(t) {
     var d = new Date(t);
     var m = d.getMinutes();
     var s = d.getSeconds();
     var ms = d.getMilliseconds();
     m = ('0' + m).slice(-2);
-    m = ('0' + m).slice(-2);
-    m = ('00' + m).slice(-3);
+    s = ('0' + s).slice(-2);
+    ms = ('00' + ms).slice(-3);
     timer.textContent = m + ':' + s + '.' + ms;
   }
 
@@ -32,10 +33,10 @@
         clearTimeout(timerId);
         timeLeft = 0;
         timeToCountDown = 0;
-        updataTimer(timeLeft);
+        updateTimer(timeLeft);
         return;
       }
-      updataTimer(timeLeft)
+      updateTimer(timeLeft);
       countDown();
     }, 10);
   }
@@ -45,4 +46,19 @@
     startTime = Date.now();
     countDown();
   });
-}) ();
+
+  min.addEventListener('click', function() {
+    timeToCountDown += 60 * 1000;
+    updateTimer(timeToCountDown);
+  });
+
+  sec.addEventListener('click', function() {
+    timeToCountDown += 1000;
+    updateTimer(timeToCountDown);
+  });
+
+  reset.addEventListener('click', function() {
+    timeToCountDown = 0;
+    updateTimer(timeToCountDown);
+  });
+})();

@@ -3,12 +3,16 @@ body {
   font-size: 14px;
   background: black;
 }
+.img-muscle{
+  position: relative;
+}
+
 .img-muscle p{
   position: absolute;
   color: #ffffff;
   font-size: 25px;
-  left: 34%;
-  top: 18%;
+  left: 5%;
+  top: 30%;
 }
 
 img{
